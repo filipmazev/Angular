@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "text": "Doctors Appointment",
+      "day": "September 13th at 18:00",
+      "reminder": true
+    },
+    {
+      "id": 2,
+      "text": "Apple Event",
+      "day": "September 12th at 10:00 (GMT-7)",
+      "reminder": true
+    },
+    {
+      "id": 3,
+      "text": "First day at new job",
+      "day": "September 11th at 08:00",
+      "reminder": false
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+<header>
+  
+  <div class="flex justify-between px-[.5rem] bg-[#171d35] rounded-tl-md rounded-tr-md mb-[.5rem]">
+   
+    <h1 class="flex-col justify-center text-center align-middle h-full">
+      <p class="text-[2rem] text-[#f0f0f0]"> {{title}} </p>
+    </h1>
+
+    <div>
+      <app-button
+          color="transparent"
+          text= "{{showAddTask ? 'Close' : 'Add'}}"
+          border= "{{showAddTask ? '1px dashed #ff273f' : '1px dashed #90ee90'}}"
+          text_color= "{{showAddTask ? '#ff273f' : '#90ee90'}}"
+          (btnClick)="toggleAddTask()">
+      </app-button>
+    </div>
+
+  </div>
+</header>

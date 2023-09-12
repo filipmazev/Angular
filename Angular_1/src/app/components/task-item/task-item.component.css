@@ -1,0 +1,32 @@
+.reminder{
+    position: relative;
+    margin-left: .5rem;
+}
+
+.reminder::before{
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 70%;
+  top: 50%;
+  transform: translate(0, -50%);
+  margin-left: -.5rem;
+  background-color: rgb(40, 139, 40);
+}
+
+.no_reminder{
+    position: relative;
+    margin-left: .5rem;
+}
+
+.no_reminder::before{
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 70%;
+    top: 50%;
+    transform: translate(0, -50%);
+    margin-left: -.5rem;
+    background-color: rgb(221, 35, 35);
+}
+  

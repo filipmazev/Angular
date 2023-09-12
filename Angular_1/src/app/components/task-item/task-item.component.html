@@ -1,0 +1,38 @@
+
+<div class="ml-[.5rem] mr-[1rem] mb-[.35rem]">
+    
+    <div class="flex flex-col w-full text-[#000285]">
+
+        <div class="w-full mx-[.25rem] py-[10px] flex flex-col gap-[.25rem]"> 
+            <div class="bg-[#61977d] h-[1px]"> </div>
+            
+            <div data-tag="task_line" class="flex flex-row justify-between">
+                <div class="select-none"> {{'#' + task?.id}} </div>
+                <button class="cursor-pointer select-none w-[1rem]" 
+                        (click)="onClickRemoveTask(task)">
+                    <fa-icon 
+                        [icon]="faTimes" 
+                        [ngStyle]="{color: '#dc2626'}"> 
+                    </fa-icon>
+                </button>
+            </div>
+            
+            <div class="bg-[#61977d] h-[1px]"> </div>
+            <div data-tag="task_line"> {{task?.text}}{{!task?.reminder ? ", " + task?.day : ""}} </div>
+            
+            <div class="bg-[#61977d] h-[1px]"> </div>
+            <div 
+                [ngClass]="{reminder: task?.reminder, no_reminder: !task?.reminder}"
+                class="cursor-pointer select-none transition-all ease-in-out hover:text-[1.05rem]" 
+                data-tag="task_line"
+                (dblclick)="onToggle(task)"
+            > 
+                {{task?.reminder ? 'Reminder set for: ' + task?.day : "No reminder set"}}  
+            </div>
+            
+            <div class="bg-[#61977d] h-[1px]"> </div>            
+        </div>
+
+    </div>
+</div>
+
