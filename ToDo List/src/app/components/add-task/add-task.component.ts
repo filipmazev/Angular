@@ -14,7 +14,7 @@ export class AddTaskComponent {
   @Output() onAddTask: EventEmitter<Task> = new EventEmitter;
   
   text: string = "";
-  day: string = "";
+  date: string = "";
   reminder: boolean = false;
   tasks: Task[] = [];
   showAddTask: boolean = false;
@@ -33,19 +33,19 @@ export class AddTaskComponent {
 
   onSubmit(){
     if(!this.text){ alert('Please add a task!'); return; }
-    if(!this.day){ alert('Please add a date!'); return;  }
+    if(!this.date){ alert('Please add a date!'); return;  }
     
     const newTask = {
         id: this.tasks[this.tasks.length-1].id + 1,
         text: this.text,
-        day: this.day,
+        date: this.date,
         reminder: this.reminder
     }
 
     this.onAddTask.emit(newTask);
 
     this.text = '';
-    this.day = '';
+    this.date = '';
     this.reminder = false;
   }
 
