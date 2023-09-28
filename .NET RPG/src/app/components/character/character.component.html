@@ -1,0 +1,28 @@
+<div class="w-full rounded-sm flex flex-row justify-between text-darker font-extrabold">
+     
+    <div [class]="'bg-' + character?.class + '-color'" class="w-[30px] md:w-auto md:p-2 md:pr-1 rounded-bl-sm rounded-tl-sm">
+        <div [class]="'bg-' + character?.class + '-selected md:block hidden transition-all ease-in-out w-[75px] h-[75px] bg-contain bg-no-repeat'">
+        </div>
+    </div>
+
+    <div class="w-full bg-tertiary flex flex-row p-2 md:p-4 align-middle">
+        
+        <div class="flex flex-col gap-2">
+            <p class="md:text-[1.5rem] text-[1.25rem]">
+                {{ character?.name }}
+            </p>
+
+            <div class="flex md:flex-row flex-col justify-between md:gap-5 gap-1">
+                <div> Hit Points: {{ character?.hitPoints }} </div>
+                <div> Strength: {{ character?.strength }} </div>
+                <div> Defense: {{ character?.defense }} </div>
+                <div> Intelligence: {{ character?.intelligence }} </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <button class="bg-red-400 rounded-tr-sm rounded-br-sm px-2 text-white" (click)="onClickRemoveCharacter(character)">
+        X
+    </button>
+</div>

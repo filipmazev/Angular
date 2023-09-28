@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'medievalsharpregular';
+    src: url('./assets/fonts/MedievalSharp/medievalsharp-regular-webfont.woff2') format('woff2'),
+         url('./assets/fonts/MedievalSharp/medievalsharp-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@layer base {
+    :root {
+        --primary: #b3bd8f;
+        --secondary: #ad9dad; 
+        --tertiary: #f0efd9; 
+        --dark: #1b1111;
+        --darker: #000000;
+
+        --range_fill: #6a7056;
+        --range_fill_pale: #b3bd8f;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--tertiary);
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary);
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+.bg-knight{
+    background-image: url(./assets/images/knight.png);
+}
+
+.bg-knight-selected{
+    background-image: url(./assets/images/knight-selected.png);
+}
+
+.bg-knight-color{
+    background: rgba(129, 213, 232, 0.75);
+}
+
+.bg-mage{
+    background-image: url(./assets/images/mage.png);
+}
+
+.bg-mage-selected{
+    background-image: url(./assets/images/mage-selected.png);
+}
+
+.bg-mage-color{
+    background: rgba(191, 128, 255, 0.75);
+}
+
+.bg-cleric{
+    background-image: url(./assets/images/cleric.png);
+}
+
+.bg-cleric-selected{
+    background-image: url(./assets/images/cleric-selected.png);
+}
+
+.bg-cleric-color{
+    background: rgba(234, 161, 52, 0.75);
+}

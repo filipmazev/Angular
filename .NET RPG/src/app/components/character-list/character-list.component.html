@@ -1,0 +1,13 @@
+<div class="flex flex-col gap-5">
+
+    <h1 class="xl:text-[3rem] md:text-[2rem] text-[1.5rem] text-tertiary font-extrabold self-center"> Character List </h1>
+
+    <div class="flex flex-col gap-5 xl:max-h-[75vh] max-h-[85vh] p-2 overflow-x-hidden overflow-y-auto">
+        <app-character
+            *ngFor="let character of characters" 
+            [character]="character" 
+            (removeICharacter)="deleteCharacter(character)"
+        >
+        </app-character>
+    </div>
+</div>

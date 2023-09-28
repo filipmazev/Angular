@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, forkJoin } from 'rxjs'
+import { Observable } from 'rxjs'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Task } from '../Task';

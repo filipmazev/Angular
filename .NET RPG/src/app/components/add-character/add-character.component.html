@@ -1,0 +1,117 @@
+<div class="xl:h-[100vh] h-full w-full bg-dark text-tertiary">
+    <div class="p-6 flex flex-col gap-[2rem] justify-center align-middle">
+        
+        <h1 class="xl:text-[3rem] md:text-[2rem] text-[1.5rem] text-primary font-extrabold self-center"> 
+            Create a Character 
+        </h1>
+
+        <div class="flex md:flex-row flex-col md:gap-[2rem] gap-[1rem] align-middle text-center w-[100%] justify-center">
+            <label for="name" class="md:text-[2rem] text-[1.5rem] font-extrabold"> Player Name </label>
+            <input id="name" type="text"
+            #name (input)="onInputFieldChange(name, 'name')" 
+            [(ngModel)]="nameValue"
+            class="md:w-[30%] w-[100%] text-[1.5rem] text-darker font-extrabold text-center" 
+            placeholder="Frodo Baggins">
+        </div>
+        
+        <div class="flex flex-col gap-2 self-center w-full">
+            
+            <div class="flex flex-col">
+                <label for="hitPoints"> Hit Points </label> 
+                <div class="flex flex-row">
+                    <input class="w-[85%]" id="hitPoints" 
+                    #hitPoints (input)="onSliderChange(hitPoints, 'hitPoints')" 
+                    [(ngModel)]="hitPointsValue"
+                    type="range" min="0" max="100" value="50" name="hitPoints"> 
+                    <div class="w-[15%] flex flex-row justify-center text-[1.25rem]"> 
+                        <p>
+                            {{hitPoints.value}} 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col">
+                <label for="strength">Strength</label>
+                <div class="flex flex-row">
+                    <input class="w-[85%]" id="strength" 
+                    #strength (input)="onSliderChange(strength, 'strength')" 
+                    [(ngModel)]="strengthValue"
+                    type="range" min="0" max="100" value="50" name="strength">
+                    <div class="w-[15%] flex flex-row justify-center text-[1.25rem]">
+                        <p>
+                            {{strength.value}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col">
+                <label for="defense"> Defense </label> 
+                <div class="flex flex-row">
+                    <input class="w-[85%]" id="defense" 
+                    #defense (input)="onSliderChange(defense, 'defense')" 
+                    [(ngModel)]="defenseValue"
+                    type="range" min="0" max="100" value="50" name="defense"> 
+                    <div class="w-[15%] flex flex-row justify-center text-[1.25rem]"> 
+                        <p>
+                            {{defense.value}} 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col">
+                <label for="intelligence"> intelligence </label> 
+                <div class="flex flex-row">
+                    <input class="w-[85%]" data-stats id="intelligence" 
+                    #intelligence (input)="onSliderChange(intelligence,  'intelligence')" 
+                    [(ngModel)]="intelligenceValue"
+                    type="range" min="0" max="100" value="50" name="intelligence"> 
+                    <div class="w-[15%] flex flex-row justify-center text-[1.25rem]"> 
+                        <p>
+                            {{intelligence.value}} 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="flex xl:flex-row flex-col w-full justify-center gap-5">
+            
+            <h1 class="text-[2rem] text-tertiary font-extrabold self-center"> 
+                Choose Your Class 
+            </h1>
+
+            <div class="flex flex-row gap-5 self-center">
+                <div data-characterClasses id="knight" class="bg-knight cursor-pointer hover:scale-[1.05] transition-all ease-in-out w-[100px] h-[100px] bg-contain bg-no-repeat" 
+                #knight (click)="onClassChange('knight')"> </div>
+               
+                <div data-characterClasses id="mage" class="bg-mage cursor-pointer hover:scale-[1.05] transition-all ease-in-out w-[100px] h-[100px] bg-contain bg-no-repeat" 
+                #mage (click)="onClassChange('mage')"> </div>
+               
+                <div data-characterClasses id="cleric" class="bg-cleric cursor-pointer hover:scale-[1.05] transition-all ease-in-out w-[100px] h-[100px] bg-contain bg-no-repeat" 
+                #cleric (click)="onClassChange('cleric')"> </div>
+            </div> 
+            
+        </div>
+
+        <div class="flex gap-5 self-center">
+            <app-button
+                content= "Save"
+                text_styling= "text-[2rem] text-dark font-bold font-medieval"
+                bg="bg-primary"
+                (btnClick)="save()">
+            </app-button>
+
+            <app-button
+                content= "Reset"
+                text_styling= "text-[2rem] text-dark font-bold font-medieval"
+                bg="bg-secondary"
+                (btnClick)="reset()">
+            </app-button>
+        </div>
+
+    </div>
+</div>
