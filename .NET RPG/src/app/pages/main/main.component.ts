@@ -7,8 +7,4 @@ import { ICharacter } from 'src/app/ICharacter';
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent { 
-
-  addCharacter(character: ICharacter){
-
-  }
 }

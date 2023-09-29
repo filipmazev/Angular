@@ -6,7 +6,7 @@
         <app-character
             *ngFor="let character of characters" 
             [character]="character" 
-            (removeICharacter)="deleteCharacter(character)"
+            (removeCharacter)="deleteCharacter(character)"
         >
         </app-character>
     </div>

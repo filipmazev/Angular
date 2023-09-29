@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter, Renderer2, ElementRef, AfterViewInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 function delay(ms: number) {
   return new Promise( resolve => setTimeout(resolve, ms) );

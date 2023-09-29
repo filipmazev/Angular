@@ -11,16 +11,16 @@ export class CharacterListComponent implements OnInit {
     
   characters: ICharacter[] = [];
   
-  constructor(private charactersService: CharacterService){ }
+  constructor(private characterService: CharacterService){ }
 
   ngOnInit(): void {
-    this.charactersService.getCharacters().subscribe((characters) => {
+    this.characterService.getCharacters().subscribe((characters) => {
       this.characters = characters.data;
     });
   }
 
   deleteCharacter(character: ICharacter){
-    this.charactersService
+    this.characterService
       .deleteCharacter(character)
       .subscribe(() => 
         (

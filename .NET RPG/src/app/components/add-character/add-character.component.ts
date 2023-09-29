@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ICharacter } from 'src/app/ICharacter';
-import { LocalStorageService } from 'src/app/services/local-storage.service.spec';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { CharacterService } from 'src/app/services/character.service';
 
 @Component({
@@ -19,11 +19,10 @@ export class AddCharacterComponent implements OnInit {
   intelligenceValue: number = 50;
   classValue: string = 'knight';
   
-  constructor(private charactersService: CharacterService, private localStorageService: LocalStorageService) {}
+  constructor(private characterService: CharacterService, private localStorageService: LocalStorageService) {}
   
   ngOnInit(): void {
-    
-    this.charactersService.getCharacters().subscribe((characters) => {
+    this.characterService.getCharacters().subscribe((characters) => {
       this.characters = characters.data;
     });
 
@@ -39,7 +38,8 @@ export class AddCharacterComponent implements OnInit {
     this.updateSlider('strength', this.strengthValue);
     this.updateSlider('defense', this.defenseValue);
     this.updateSlider('intelligence', this.intelligenceValue);
-    this.updateClass(this.classValue);
+
+    this.onClassChange(this.classValue);
   }
 
   onSliderChange(input: HTMLInputElement, key: string): void {
@@ -53,6 +53,7 @@ export class AddCharacterComponent implements OnInit {
   }
 
   onClassChange(key: string): void {
+    this.classValue = key;
     document.querySelectorAll("[data-characterClasses]").forEach((element) => {
       element.classList.toggle(`bg-${element.id}-selected`, element.id === key);
     });
@@ -75,18 +76,14 @@ export class AddCharacterComponent implements OnInit {
     }
   }
 
-  private updateClass(key: string): void { 
-    this.classValue = key;
-    this.onClassChange(key); 
-  }
-
   reset(){
     this.updateSlider('hitPoints', 50); 
     this.updateSlider('strength', 50);
     this.updateSlider('defense', 50);
     this.updateSlider('intelligence', 50);
     this.updateInputField('name', "");
-    this.updateClass('knight');
+    
+    this.onClassChange('knight');
   }
 
   save(){
@@ -100,10 +97,9 @@ export class AddCharacterComponent implements OnInit {
       defense: this.defenseValue,
       intelligence: this.intelligenceValue,
       class: this.classValue
-    }
+    };
 
-    this.charactersService.addCharacter(newCharacter).subscribe((character) => (this.characters.push(character)));
-
+    this.characterService.addCharacter(newCharacter).subscribe((character) => (this.characters.push(character)));
     this.reset();
   }
 }

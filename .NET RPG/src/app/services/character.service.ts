@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ICharacter } from '../ICharacter';
+import { environmet } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -13,9 +14,12 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class CharacterService {
-  private apiUrl = 'https://localhost:7087/api/Character';
+  private endpoint = 'Character';
+  private apiUrl: string = "";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.apiUrl = `${environmet.domain}${this.endpoint}`;
+  }
 
   getCharacters(): Observable<any> {
     return this.http.get<any>(this.apiUrl);

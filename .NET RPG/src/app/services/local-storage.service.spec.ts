@@ -1,18 +1,16 @@
-import { Injectable } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class LocalStorageService {
+import { LocalStorageService } from './local-storage.service';
 
-  constructor() { }
+describe('LocalStorageService', () => {
+  let service: LocalStorageService;
 
-  getValue(key: string, defaultValue: any = null): any {
-    const value = localStorage.getItem(key);
-    return value !== null ? JSON.parse(value) : defaultValue;
-  }
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(LocalStorageService);
+  });
 
-  setValue(key: string, value: any): void {
-    localStorage.setItem(key, JSON.stringify(value));
-  }
-}
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});

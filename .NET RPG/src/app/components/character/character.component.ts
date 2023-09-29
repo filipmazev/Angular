@@ -8,9 +8,9 @@ import { ICharacter } from "../../ICharacter";
 })
 export class CharacterComponent {
   @Input() character: ICharacter | undefined;
-  @Output() removeICharacter: EventEmitter<ICharacter> = new EventEmitter;
+  @Output() removeCharacter: EventEmitter<ICharacter> = new EventEmitter;
 
   onClickRemoveCharacter(character: ICharacter | undefined){
-    this.removeICharacter.emit(character);
+    this.removeCharacter.emit(character);
   }
 }
