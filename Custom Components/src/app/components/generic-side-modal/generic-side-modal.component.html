@@ -1,0 +1,34 @@
+<div class="modal-backdrop popup-anim" *ngIf="modalExtended && windowDimensions.width < windowDimensions.threshold_xl" (click)="toggleModalExtended(false)"></div>
+
+<div #modalContent class="z-[50] xl:z-[0]
+overflow-hidden bottom-0 mx-0 my-auto fixed
+xl:overflow-auto xl:bottom-auto xl:mx-auto xl:my-auto xl:sticky
+transition-all duration-200 ease-in-out"
+*ngIf="modalOpen"
+[ngClass]="{'modal-default-style xl:min-w-[34rem] xl:max-w-[34rem] min-w-[25rem] xs:min-w-[33rem] max-w-[95vw]': defaultStyle !== false,
+'modal-height': overrideFullHeight !== true,
+'right-0': sideModalConfig?.side === 'right',
+'translate-x-[-100%]': !modalExtended && windowDimensions.width < windowDimensions.threshold_xl && sideModalConfig?.side === 'left',
+'translate-x-[100%]': !modalExtended && windowDimensions.width < windowDimensions.threshold_xl && sideModalConfig?.side === 'right'}">
+    <div [ngClass]="{'p-[1rem]2xl:min-h-[93vh] flex flex-col justify-start align-middle items-center w-full': defaultStyle !== false}" >
+        <div class="w-full" *ngIf="sideNavTitleText !== undefined">
+            <div class="font-bold mb-[1rem] text-[1.5rem]">{{sideNavTitleText}}</div>
+            <hr class="w-[11rem] border-solid border-rgba-gray mb-7">
+        </div>
+        <ng-content></ng-content>
+    </div>
+</div>
+
+<div #mobileButton *ngIf="modalOpen"
+class="fixed w-max bottom-[0.75rem] rounded-full shadow-sm xl:hidden transition-all duration-[70ms] mb-5 z-[60]">
+    <div>
+        <div class="w-16 h-16 rounded-full flex flex-col justify-center align-middle items-center bg-[#414339] hover:cursor-pointer relative"
+            (click)="toggleModalExtended()">
+            <svg class="w-[20px] h-[20px] self-center transition-all duration-200 ease-in-out"viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg"
+                [ngClass]="{'rotate-180': modalExtended}">
+                <path *ngIf="sideModalConfig?.side === 'right'" d="M5 1L1 5L5 9" stroke="#efefe8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path *ngIf="sideModalConfig?.side === 'left'" d="M1 9L5 5L1 1" stroke="#efefe8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
+</div>

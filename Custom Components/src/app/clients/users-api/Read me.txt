@@ -1,0 +1,3 @@
+1. execute ' npm install -g nswag ' in cmd to install the nswag CLI
+2. In cmd navigate to the folder containing nswag.json
+3. execute 'nswag run' to generate the client

@@ -1,0 +1,33 @@
+<div class="spinner-container" *ngIf="spinnerActive || !secondaryConditionSatisfied"
+[ngClass]="{'stop-spinning': !secondaryConditionSatisfied && !spinnerActive}">
+    <div class="flex flex-col gap-5 justify-center align-middle">
+        <div class="select-none">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <div class="spinner spinner_1"></div>
+            </div>
+        
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <div class="spinner spinner_2"></div>
+            </div>
+        
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <div class="spinner spinner_3"></div>
+            </div>
+        </div>
+
+        <div class="absolute opacity-0 transition-opacity duration-200 text-[.7rem] md:text-[1rem] w-full px-[.5rem]
+        top-[62%] md:top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-center flex flex-col align-middle justify-center mt-[1rem]"
+            [ngClass]="{'opacity-100': !secondaryConditionSatisfied && !spinnerActive, 'select-none pointer-events-none': spinnerActive}">
+            <p *ngIf="triesLeft > 0"> {{triesLeft}} </p>
+            <button *ngIf="functionToRetry !== undefined" 
+            class="self-center w-[40px] h-[40px] flex flex-col justify-center align-middle items-center p-2 mt-[1rem] bg-red-600 text-white hover:cursor-pointer rounded-full shadow-md z-[100]" (click)="triesLeft > 0 ? retry() : null"
+            [ngClass]="{'opacity-50 select-none pointer-events-none cursor-not-allowed': triesLeft <= 0 || spinnerActive}">
+            <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <path fill="white" d="M972.8 102.4c-30.72 0-51.2 20.48-51.2 51.2v51.2c-51.2-71.68-122.88-128-204.8-158.72C460.8-66.56 158.72 51.2 46.08 307.2S51.2 865.28 307.2 977.92 865.28 972.8 977.92 716.8H972.8c0-30.72-20.48-51.2-51.2-51.2s-51.2 20.48-51.2 51.2h-5.12c-46.08 76.8-112.64 138.24-199.68 174.08-209.92 87.04-445.44-15.36-532.48-225.28S148.48 215.04 358.4 133.12c189.44-81.92 404.48 0 506.88 174.08H768c-30.72 0-51.2 20.48-51.2 51.2s20.48 51.2 51.2 51.2h204.8c30.72 0 51.2-20.48 51.2-51.2V153.6c0-30.72-20.48-51.2-51.2-51.2z"/>
+            </svg>
+            </button>    
+        </div>
+
+
+    </div>    
+</div>

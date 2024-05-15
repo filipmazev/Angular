@@ -1,0 +1,31 @@
+<app-generic-side-modal-container [sideNavTitleText]="'Demo Page'">
+  
+    <div mainPageContent class="flex flex-row justify-start page-height w-screen h-screen overflow-hidden bg-[#272822] lg:p-[5rem] px-[1rem] pt-[1rem] sm:mb-0 mb-[6rem]">
+      
+    </div>
+  
+    <div sideNavContent class="w-full min-w-[35vw] xl:min-w-0">
+        <div>
+            <button (click)="toggleGenericPopup(true)">
+                Click Me
+            </button>
+        </div>
+    </div>
+  
+</app-generic-side-modal-container>
+  
+<app-generic-modal #genericPopup *ngIf="showGenericPopup"
+[modal_state_function]="onClosePopup"
+[bannerText]="'Demo Page'"
+[handle_extreme_overflow]="false"
+[handle_mobile]="true"
+(handleCloseEmitter)="onClosePopup()">
+<div class="py-2 sm:py-0 px-5 sm:px-0 w-[100%] sm:w-[45rem]">
+  <div class="flex flex-col w-full" >
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit tenetur quaerat maxime placeat commodi enim odit quis nam qui veritatis voluptatibus quo vero quia beatae optio esse velit, similique quidem.
+        Laudantium asperiores laboriosam consequatur molestias officiis beatae animi vero, rerum totam velit deleniti delectus optio ex reprehenderit corrupti labore magnam a exercitationem esse odio sequi? Accusamus minus vero reiciendis eveniet!
+    </p>
+  </div>
+</div>
+</app-generic-modal>

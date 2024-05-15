@@ -1,0 +1,18 @@
+<div class="overlay popup-anim" (click)="handleClose()"></div>
+
+<div class="modal-style open-modal bottom-0 left-0" #childrenRef
+     [style.min-height]="custom_height ? custom_height: ''"
+     [style.transform]="!isFinished ? 'translateY(' + (modalTranslate * (-1) > (windowInnerHeight / up_limit) ? (windowInnerHeight / up_limit) * (-1) : modalTranslate) + 'px)' : 'translateY(100%)'"
+     [style.transition]="!isSwiping ? '300ms ease-in-out' : ''"
+     [style.opacity]="1 - ((modalTranslate / windowInnerHeight) * (opacity_modifier !== undefined ? opacity_modifier : .5))">
+     <br>
+
+  <div #targetElement class="touch-hitbox">
+    <div class="swipe-line"></div>
+  </div>
+
+  <div #modalContent class="px-5 pb-5 sm:pt-5 pt-0 swipeable-modal-content-height overflow-y-auto">
+    <ng-content></ng-content>
+  </div>
+
+</div>

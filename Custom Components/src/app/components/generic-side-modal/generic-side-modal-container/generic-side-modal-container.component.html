@@ -1,0 +1,20 @@
+<div class="flex flex-row-reverse h-max bg-red-40 xl:flex-row xl:w-full overflow-x-clip gap-3 relative">
+
+    <ng-content class="h-full" select="[mainPageContent]"></ng-content>
+
+    <app-generic-side-modal
+      (handleCloseEmitter)="closeModal(false)"
+      [modal_state_function]="closeModal"
+      [mobile_backgdrop]="mobile_backgdrop" 
+      [close_delay]="close_delay"
+      [defaultStyle]="defaultStyle"
+      [overrideFullHeight]="overrideFullHeight"
+      [handle_extreme_overflow]="handle_extreme_overflow"
+      [sideModalConfig]="sideModalConfig"
+      [handle_mobile]="handle_mobile"
+      [sideNavTitleText]="sideNavTitleText">
+      <ng-content select="[sideNavContent]"></ng-content>
+    </app-generic-side-modal>
+  
+</div>
+  

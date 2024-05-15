@@ -1,0 +1,31 @@
+<ng-template #dynamicComponentTemplate *ngIf="modalOpen">
+    <div class="min-w-[5rem] min-h-[5rem] overflow-auto" #modalContent
+        [ngClass]="{'modal-default-style': defaultStyle !== false}">
+        <div *ngIf="bannerText !== undefined && bannerText!.length > 0" class="modal-top-banner uppercase font-extrabold text-2xl">
+            {{bannerText}}
+        </div>
+        <div [ngClass]="{'p-[3rem] popup-anim modal-max-height overflow-y-auto': defaultStyle !== false}">
+            <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<app-swipeable-modal
+    #mobileModal
+    *ngIf="windowDimensions.width < windowDimensions.threshold_sm && modalOpen && hasSmallModal"
+    [modal_state_function]="handleClose"
+    [handle_overflow_input]="mobile_handle_overflow_input"
+    [down_swipe_limiter]="mobile_down_swipe_limiter"
+    [up_swipe_limiter]="mobile_up_swipe_limiter"
+    [opacity_modifier]="mobile_opacity_modifier"
+    [wrapper_class]="mobile_wrapper_class"
+    [custom_height]="mobile_custom_height"
+    [close_delay]="close_delay"
+    (handleCloseEmitter)="handleClose()">
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+</app-swipeable-modal>
+
+<ng-template #contentTemplate>
+    <ng-content></ng-content>
+</ng-template>
+
